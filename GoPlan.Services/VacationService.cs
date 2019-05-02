@@ -41,6 +41,74 @@ namespace GoPlan.Services
 
         }
 
+        public IEnumerable<VacationListItem> GetVacationByUser()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Vacations
+                        .Where(e => e.UserID == _userId)
+                        .Select(
+                            e =>
+                                new VacationListItem
+                                {
+                                    StartDate = e.StartDate,
+                                    EndDate = e.EndDate,
+                                    Name = e.Name,
+                                    TotalCost = e.TotalCost,
+                                    Attendees = e.Attendees,
+                                    ImageSource = e.ImageSource
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+        public IEnumerable<VacationListItem> GetVacations()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query =
+                    ctx
+                        .Vacations
+                        .Select(
+                            e =>
+                                new VacationListItem
+                                {
+                                    StartDate = e.StartDate,
+                                    EndDate = e.EndDate,
+                                    Name = e.Name,
+                                    TotalCost = e.TotalCost,
+                                    Attendees = e.Attendees,
+                                    ImageSource = e.ImageSource
+                                }
+                        );
+
+                return query.ToArray();
+            }
+        }
+
+        public bool UpdateVacation(VacationEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Vacations
+                        .Single(e => e.ID == model.ID && e.UserID == _userId);
+
+                entity.StartDate = model.StartDate;
+                entity.EndDate = model.EndDate;
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+                entity.Attendees = model.Attendees;
+                entity.ImageSource = model.ImageSource;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+
         private List<string> convertArrayToList(string[] array)
         {
             var output = array.ToList();
