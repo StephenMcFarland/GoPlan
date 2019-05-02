@@ -9,10 +9,11 @@ namespace GoPlan.Models.VacaEventModels
 {
     public class VacaEventCreate
     {
+        public int VacationID { get; set; }
         [Required]
-        public string EventType { get; set; }
+        public int EventTypeID { get; set; }
         [Required]
-        public string Location { get; set; }
+        public int LocationID { get; set; }
         [Required]
         [MinLength(2, ErrorMessage = "Name must include at least 2 characters.")]
         [MaxLength(25, ErrorMessage = "Name cannot exceed 25 characters.")]

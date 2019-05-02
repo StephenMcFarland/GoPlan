@@ -22,11 +22,12 @@ namespace GoPlan.Services
         {
             var entity = new VacaEvent()
             {
+                VacationID = model.VacationID,
                 UserID = _userId,
                 Name = model.Name,
                 Description = model.Description,
-                EventTypeID = 0,
-                LocationID = 0,
+                EventTypeID = model.EventTypeID,
+                LocationID = model.LocationID,
                 ImageSource = model.ImageSource,
                 StartDate = model.StartDate,
                 EndDate = model.EndDate,
@@ -128,6 +129,38 @@ namespace GoPlan.Services
                 };
 
                 return detail;
+            }
+        }
+
+        public bool UpdateVacaEvent(VacaEventDetailEdit model)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                //may need to add user/admin edit authorization check?
+                var entity = ctx.VacaEvents.Single(e => e.ID == model.ID);
+
+                entity.EventTypeID = model.EventTypeID;
+                entity.LocationID = model.LocationID;
+                entity.VacationID = model.VacationID;
+                entity.Name = model.Name;
+                entity.Description = model.Description;
+                entity.ImageSource = model.ImageSource;
+                entity.StartDate = model.StartDate;
+                entity.EndDate = model.EndDate;
+                entity.Cost = model.Cost;
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
+        public bool DeleteVacaEvent(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                //may need to add user/admin edit authorization check?
+                var entity = ctx.VacaEvents.Single(e => e.ID == id);
+                ctx.VacaEvents.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
             }
         }
 
