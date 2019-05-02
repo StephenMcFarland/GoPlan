@@ -39,5 +39,72 @@ namespace GoPlan.Services
                 return ctx.SaveChanges() == 1;
             }
         }
+
+        private string NameParser(int id, string type)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                switch (type)
+                {
+                    case "typeofevent":
+                        return ctx.EventTypes.Single(e => e.ID == id).Name;
+                    case "location":
+                        string[] array = new string[3];
+                        var entity = ctx.Locations.Single(e => e.ID == id);
+                        array[0] = entity.City;
+                        array[1] = entity.State;
+                        array[2] = entity.Country;
+                        array[3] = entity.Planet;
+                        string output = string.Join(", ", array);
+                        return output;
+                    case "vacation":
+                        return ctx.Vacations.Single(e => e.ID == id).Name;
+                    default:
+                        return "Nowhere";
+                }
+            }
+        }
+        public IEnumerable<VacaEventListItem> GetVacaEvents()
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.VacaEvents
+                    .Select(e => new VacaEventListItem
+                    {
+                        TypeOfEvent = NameParser(e.EventTypeID, "typeofevent"),
+                        LocationName = NameParser(e.LocationID, "location"),
+                        VacationName = NameParser(e.VacationID, "vacation"),
+                        Name = e.Name,
+                        Description = e.Description,
+                        ImageSource = e.ImageSource,
+                        StartDate = e.StartDate,
+                        EndDate = e.EndDate,
+                        Cost = e.Cost 
+                    });
+                return query.ToArray();
+            }
+        }
+
+        public IEnumerable<VacaEventListItem> GetVacaEventsByVacation(int vacaID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var query = ctx.VacaEvents.Where(e => e.VacationID == vacaID)
+                    .Select(e => new VacaEventListItem
+                    {
+                        TypeOfEvent = NameParser(e.EventTypeID, "typeofevent"),
+                        LocationName = NameParser(e.LocationID, "location"),
+                        VacationName = NameParser(e.VacationID, "vacation"),
+                        Name = e.Name,
+                        Description = e.Description,
+                        ImageSource = e.ImageSource,
+                        StartDate = e.StartDate,
+                        EndDate = e.EndDate,
+                        Cost = e.Cost
+                    });
+                return query.ToArray();
+            }
+        }
+
     }
 }
