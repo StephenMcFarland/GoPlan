@@ -106,5 +106,30 @@ namespace GoPlan.Services
             }
         }
 
+        public VacaEventDetailEdit GetVacaEventByID(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.VacaEvents.Single(e => e.ID == id);
+                var userEntity = ctx.Users.FirstOrDefault(e => e.Id == entity.UserID.ToString());
+                var detail = new VacaEventDetailEdit
+                {
+                    ID = entity.ID,
+                    User = userEntity.UserName,
+                    EventTypeID = entity.EventTypeID,
+                    LocationID = entity.LocationID,
+                    VacationID = entity.VacationID,
+                    Name = entity.Name,
+                    Description = entity.Description,
+                    ImageSource = entity.ImageSource,
+                    StartDate = entity.StartDate,
+                    EndDate = entity.EndDate,
+                    Cost = entity.Cost
+                };
+
+                return detail;
+            }
+        }
+
     }
 }
