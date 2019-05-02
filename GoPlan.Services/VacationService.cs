@@ -109,6 +109,20 @@ namespace GoPlan.Services
             }
         }
 
+        public bool DeleteVacation(int ID)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity =
+                    ctx
+                        .Vacations
+                        .Single(e => e.ID == ID && e.UserID == _userId);
+
+                ctx.Vacations.Remove(entity);
+
+                return ctx.SaveChanges() == 1;
+            }
+        }
         private List<string> convertArrayToList(string[] array)
         {
             var output = array.ToList();
