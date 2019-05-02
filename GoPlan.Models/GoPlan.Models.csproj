@@ -72,11 +72,20 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventTypeModels\EventTypeCreate.cs" />
+    <Compile Include="EventTypeModels\EventTypeDetails.cs" />
+    <Compile Include="EventTypeModels\EventTypeRead.cs" />
+    <Compile Include="EventTypeModels\EventTypeUpdate.cs" />
+    <Compile Include="LocationModels\LocationCreate.cs" />
+    <Compile Include="LocationModels\LocationDetails.cs" />
+    <Compile Include="LocationModels\LocationRead.cs" />
+    <Compile Include="LocationModels\LocationUpdate.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
