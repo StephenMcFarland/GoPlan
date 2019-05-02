@@ -73,6 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VacationModels\VacationAdminListItem.cs" />
+    <Compile Include="VacationModels\VacationCreate.cs" />
+    <Compile Include="VacationModels\VacationEdit.cs" />
+    <Compile Include="VacationModels\VacationListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
