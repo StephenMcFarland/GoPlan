@@ -73,6 +73,8 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VacaEventModels\VacaEventCreate.cs" />
+    <Compile Include="VacaEventModels\VacaEventListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
