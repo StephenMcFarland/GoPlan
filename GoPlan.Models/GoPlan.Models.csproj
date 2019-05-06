@@ -72,10 +72,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="EventTypeModels\EventTypeCreate.cs" />
-    <Compile Include="EventTypeModels\EventTypeDetails.cs" />
-    <Compile Include="EventTypeModels\EventTypeRead.cs" />
-    <Compile Include="EventTypeModels\EventTypeUpdate.cs" />
+    <Compile Include="EventTypeModels\EventTypeModel.cs" />
     <Compile Include="LocationModels\LocationCreate.cs" />
     <Compile Include="LocationModels\LocationDetails.cs" />
     <Compile Include="LocationModels\LocationRead.cs" />

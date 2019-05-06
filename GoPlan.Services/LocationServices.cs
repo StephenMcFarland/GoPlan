@@ -4,10 +4,9 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace GoPlan.Models.EventTypeModels
+namespace GoPlan.Services
 {
-    public class EventTypeUpdate
+    public class LocationServices
     {
-        public string Name { get; set; }
     }
 }

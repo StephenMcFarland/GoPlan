@@ -6,8 +6,9 @@ using System.Threading.Tasks;
 
 namespace GoPlan.Models.EventTypeModels
 {
-    public class EventTypeRead
+    public class EventTypeModel
     {
+        public int ID { get; set; }
         public string Name { get; set; }
     }
 }
