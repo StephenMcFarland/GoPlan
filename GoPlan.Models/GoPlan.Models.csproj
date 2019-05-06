@@ -73,10 +73,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="EventTypeModels\EventTypeModel.cs" />
-    <Compile Include="LocationModels\LocationCreate.cs" />
-    <Compile Include="LocationModels\LocationDetails.cs" />
-    <Compile Include="LocationModels\LocationRead.cs" />
-    <Compile Include="LocationModels\LocationUpdate.cs" />
+    <Compile Include="LocationModels\LocationModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

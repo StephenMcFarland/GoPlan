@@ -60,6 +60,7 @@ namespace GoPlan.Services
                 };
             }
         }
+
         public bool UpdateEventType(EventTypeModel model)
         {
             using (var ctx = new ApplicationDbContext())
