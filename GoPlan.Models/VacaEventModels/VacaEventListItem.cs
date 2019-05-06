@@ -10,6 +10,7 @@ namespace GoPlan.Models.VacaEventModels
     {
         public string TypeOfEvent { get; set; }
         public string LocationName { get; set; }
+        public string GooglePlaceID { get; set; }
         public string VacationName { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

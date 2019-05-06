@@ -9,10 +9,12 @@ namespace GoPlan.Models.VacationModels
 {
     public class VacationCreate
     {
+            [Required]
             public DateTimeOffset StartDate { get; set; }
 
             public DateTimeOffset EndDate { get; set; }
 
+            [Required]
             public string Name { get; set; }
 
             [Required]

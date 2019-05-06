@@ -13,6 +13,8 @@ namespace GoPlan.Services
 
         private readonly Guid _userId;
 
+        public VacationService(){}
+
         public VacationService(Guid userId)
         {
             _userId = userId;
@@ -56,6 +58,7 @@ namespace GoPlan.Services
                                     StartDate = e.StartDate,
                                     EndDate = e.EndDate,
                                     Name = e.Name,
+                                    Description = e.Description,
                                     TotalCost = e.TotalCost,
                                     Attendees = e.Attendees,
                                     ImageSource = e.ImageSource
@@ -65,7 +68,7 @@ namespace GoPlan.Services
                 return query.ToArray();
             }
         }
-        public IEnumerable<VacationListItem> GetVacations()
+        public IEnumerable<VacationAdminListItem> GetVacations()
         {
             using (var ctx = new ApplicationDbContext())
             {
@@ -74,13 +77,12 @@ namespace GoPlan.Services
                         .Vacations
                         .Select(
                             e =>
-                                new VacationListItem
+                                new VacationAdminListItem
                                 {
-                                    StartDate = e.StartDate,
-                                    EndDate = e.EndDate,
+                                    ID = e.ID,
+                                    UserID = e.UserID.ToString(),
                                     Name = e.Name,
                                     TotalCost = e.TotalCost,
-                                    Attendees = e.Attendees,
                                     ImageSource = e.ImageSource
                                 }
                         );
@@ -103,6 +105,8 @@ namespace GoPlan.Services
                 entity.Name = model.Name;
                 entity.Description = model.Description;
                 entity.Attendees = model.Attendees;
+                entity.EventList = model.EventList;
+                entity.TotalCost = model.TotalCost;
                 entity.ImageSource = model.ImageSource;
 
                 return ctx.SaveChanges() == 1;

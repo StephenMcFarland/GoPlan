@@ -27,7 +27,8 @@ namespace GoPlan.Services
                 Name = model.Name,
                 Description = model.Description,
                 EventTypeID = model.EventTypeID,
-                LocationID = model.LocationID,
+                LocationName = model.LocationName,
+                GooglePlaceID = model.GooglePlaceID,
                 ImageSource = model.ImageSource,
                 StartDate = model.StartDate,
                 EndDate = model.EndDate,
@@ -73,7 +74,8 @@ namespace GoPlan.Services
                     .Select(e => new VacaEventListItem
                     {
                         TypeOfEvent = NameParser(e.EventTypeID, "typeofevent"),
-                        LocationName = NameParser(e.LocationID, "location"),
+                        LocationName = e.LocationName,
+                        GooglePlaceID = e.GooglePlaceID,
                         VacationName = NameParser(e.VacationID, "vacation"),
                         Name = e.Name,
                         Description = e.Description,
@@ -94,7 +96,8 @@ namespace GoPlan.Services
                     .Select(e => new VacaEventListItem
                     {
                         TypeOfEvent = NameParser(e.EventTypeID, "typeofevent"),
-                        LocationName = NameParser(e.LocationID, "location"),
+                        LocationName = e.LocationName,
+                        GooglePlaceID = e.GooglePlaceID,
                         VacationName = NameParser(e.VacationID, "vacation"),
                         Name = e.Name,
                         Description = e.Description,
@@ -118,7 +121,8 @@ namespace GoPlan.Services
                     ID = entity.ID,
                     User = userEntity.UserName,
                     EventTypeID = entity.EventTypeID,
-                    LocationID = entity.LocationID,
+                    LocationName = entity.LocationName,
+                    GooglePlaceID = entity.GooglePlaceID,
                     VacationID = entity.VacationID,
                     Name = entity.Name,
                     Description = entity.Description,
@@ -140,7 +144,8 @@ namespace GoPlan.Services
                 var entity = ctx.VacaEvents.Single(e => e.ID == model.ID);
 
                 entity.EventTypeID = model.EventTypeID;
-                entity.LocationID = model.LocationID;
+                entity.LocationName = model.LocationName;
+                entity.GooglePlaceID = model.GooglePlaceID;
                 entity.VacationID = model.VacationID;
                 entity.Name = model.Name;
                 entity.Description = model.Description;

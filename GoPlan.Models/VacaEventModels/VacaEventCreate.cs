@@ -12,8 +12,8 @@ namespace GoPlan.Models.VacaEventModels
         public int VacationID { get; set; }
         [Required]
         public int EventTypeID { get; set; }
-        [Required]
-        public int LocationID { get; set; }
+        public string LocationName { get; set; }
+        public string GooglePlaceID { get; set; }
         [Required]
         [MinLength(2, ErrorMessage = "Name must include at least 2 characters.")]
         [MaxLength(25, ErrorMessage = "Name cannot exceed 25 characters.")]

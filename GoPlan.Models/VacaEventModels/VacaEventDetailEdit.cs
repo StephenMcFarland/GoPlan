@@ -11,7 +11,8 @@ namespace GoPlan.Models.VacaEventModels
         public int ID { get; set; }
         public string User { get; set; }
         public int EventTypeID { get; set; }
-        public int LocationID { get; set; }
+        public string LocationName { get; set; }
+        public string GooglePlaceID { get; set; }
         public int VacationID { get; set; }
         public string Name { get; set; }
         public string Description { get; set; }

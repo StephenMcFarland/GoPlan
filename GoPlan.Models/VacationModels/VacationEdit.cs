@@ -9,6 +9,9 @@ namespace GoPlan.Models.VacationModels
     public class VacationEdit
     {
         public int ID { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+
         public DateTimeOffset StartDate { get; set; }
 
         public DateTimeOffset EndDate { get; set; }
@@ -19,6 +22,10 @@ namespace GoPlan.Models.VacationModels
 
         public List<string> Attendees { get; set; }
 
+        public decimal TotalCost { get; set; }
+
         public string ImageSource { get; set; }
+
+        public string EventList { get; set; }
     }
 }

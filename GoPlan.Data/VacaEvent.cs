@@ -15,8 +15,11 @@ namespace GoPlan.Data
         public Guid UserID { get; set; }
         [Required]
         public int EventTypeID { get; set; }
-        [Required]
-        public int LocationID { get; set; }
+
+        public string LocationName { get; set; }
+
+        public string GooglePlaceID { get; set; }
+
         [Required]
         public int VacationID { get; set; }
         [Required]
