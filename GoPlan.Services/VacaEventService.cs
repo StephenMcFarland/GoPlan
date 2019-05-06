@@ -8,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace GoPlan.Services
 {
-    class VacaEventService
+    public class VacaEventService
     {
         private readonly Guid _userId;
 
