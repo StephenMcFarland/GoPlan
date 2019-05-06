@@ -72,6 +72,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="EventTypeServices.cs" />
+    <Compile Include="LocationServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VacationService.cs" />
     <Compile Include="VacaEventService.cs" />
