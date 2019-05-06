@@ -87,6 +87,15 @@
     <Compile Include="EventType.cs" />
     <Compile Include="IdentityModels.cs" />
     <Compile Include="Location.cs" />
+    <Compile Include="Migrations\201905061748172_InitialCreate.cs" />
+    <Compile Include="Migrations\201905061748172_InitialCreate.Designer.cs">
+      <DependentUpon>201905061748172_InitialCreate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905061937568_initial.cs" />
+    <Compile Include="Migrations\201905061937568_initial.Designer.cs">
+      <DependentUpon>201905061937568_initial.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="VacaEvent.cs" />
     <Compile Include="Vacation.cs" />
@@ -94,6 +103,14 @@
   <ItemGroup>
     <None Include="App.config" />
     <None Include="packages.config" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905061748172_InitialCreate.resx">
+      <DependentUpon>201905061748172_InitialCreate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905061937568_initial.resx">
+      <DependentUpon>201905061937568_initial.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

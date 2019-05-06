@@ -9,6 +9,8 @@ namespace GoPlan.Models.VacationModels
 {
     public class VacationCreate
     {
+            public Guid UserID { get; set; }
+
             [Required]
             public DateTimeOffset StartDate { get; set; }
 

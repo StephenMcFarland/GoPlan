@@ -30,7 +30,7 @@ namespace GoPlan.Data
 
         public string EventList { get; set; }
 
-        public List<string> Attendees { get; set; }
+        public string Attendees { get; set; }
 
 
     }

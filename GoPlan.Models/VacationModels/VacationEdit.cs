@@ -20,7 +20,7 @@ namespace GoPlan.Models.VacationModels
 
         public string Description { get; set; }
 
-        public List<string> Attendees { get; set; }
+        public string[] Attendees { get; set; }
 
         public decimal TotalCost { get; set; }
 

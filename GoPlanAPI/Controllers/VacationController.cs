@@ -29,7 +29,14 @@ namespace GoPlanAPI.Controllers
         public IHttpActionResult GetByUser()
         {
             VacationService vacationService = CreateVacationService();
-            var vacation = vacationService.GetVacationByUser();
+            var vacations = vacationService.GetVacationByUser();
+            return Ok(vacations);
+        }
+
+        public IHttpActionResult Get(int id)
+        {
+            VacationService vacationService = CreateVacationService();
+            var vacation = vacationService.GetVacation(id);
             return Ok(vacation);
         }
         public IHttpActionResult Put(VacationEdit model)

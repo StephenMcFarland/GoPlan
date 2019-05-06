@@ -22,15 +22,20 @@ namespace GoPlan.Services
 
         public bool CreateVacation(VacationCreate model)
         {
+            string attendees = "None";
+            try { attendees = String.Join(",", model.Attendees); }
+            catch (ArgumentNullException) { }
+
             var entity =
                 new Vacation()
                 {
-
+                    UserID = _userId,
+                    CreatedDate = DateTimeOffset.Now,
                     StartDate = model.StartDate,
                     EndDate = model.EndDate,
                     Name = model.Name,
                     Description = model.Description,
-                    Attendees = convertArrayToList(model.Attendees),
+                    Attendees = attendees,
                     ImageSource = model.ImageSource
                 };
 
@@ -41,7 +46,7 @@ namespace GoPlan.Services
             }
 
 
-        }
+            }
 
         public IEnumerable<VacationListItem> GetVacationByUser()
         {
@@ -50,6 +55,7 @@ namespace GoPlan.Services
                 var query =
                     ctx
                         .Vacations
+                        .AsEnumerable()
                         .Where(e => e.UserID == _userId)
                         .Select(
                             e =>
@@ -60,7 +66,7 @@ namespace GoPlan.Services
                                     Name = e.Name,
                                     Description = e.Description,
                                     TotalCost = e.TotalCost,
-                                    Attendees = e.Attendees,
+                                    Attendees = e.Attendees.Split(',').ToList(),
                                     ImageSource = e.ImageSource
                                 }
                         );
@@ -90,7 +96,29 @@ namespace GoPlan.Services
                 return query.ToArray();
             }
         }
+        
+        public VacationEdit GetVacation(int id)
+        {
+            using (var ctx = new ApplicationDbContext())
+            {
+                var entity = ctx.Vacations.Single(e => e.ID == id);
+                var detail = new VacationEdit
+                {
+                    ID = entity.ID,
+                    CreatedDate = entity.CreatedDate,
+                    StartDate = entity.StartDate,
+                    EndDate = entity.StartDate,
+                    Name = entity.Name,
+                    Description = entity.Description,
+                    Attendees = entity.Attendees.Split(','),
+                    ImageSource = entity.ImageSource,
+                    EventList = entity.EventList,
+                    TotalCost = entity.TotalCost
+                };
 
+                return detail;
+            }
+        }
         public bool UpdateVacation(VacationEdit model)
         {
             using (var ctx = new ApplicationDbContext())
@@ -104,7 +132,7 @@ namespace GoPlan.Services
                 entity.EndDate = model.EndDate;
                 entity.Name = model.Name;
                 entity.Description = model.Description;
-                entity.Attendees = model.Attendees;
+                entity.Attendees = String.Join(",", model.Attendees);
                 entity.EventList = model.EventList;
                 entity.TotalCost = model.TotalCost;
                 entity.ImageSource = model.ImageSource;
