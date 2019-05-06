@@ -77,6 +77,9 @@
     <Compile Include="VacationModels\VacationCreate.cs" />
     <Compile Include="VacationModels\VacationEdit.cs" />
     <Compile Include="VacationModels\VacationListItem.cs" />
+    <Compile Include="VacaEventModels\VacaEventCreate.cs" />
+    <Compile Include="VacaEventModels\VacaEventDetailEdit.cs" />
+    <Compile Include="VacaEventModels\VacaEventListItem.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
