@@ -20,6 +20,11 @@ using GoPlan.Data;
 
 namespace GoPlanAPI.Controllers
 {
+    #if !DEBUG
+        [RequireHttps]
+
+    #endif
+
     [Authorize]
     [RoutePrefix("api/Account")]
     public class AccountController : ApiController
