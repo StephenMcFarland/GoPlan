@@ -11,10 +11,7 @@ namespace GoPlan.Services
     public class EventTypeServices
     {
 
-        public EventTypeServices()
-        {
-            
-        }
+        public EventTypeServices(){}
 
         public bool CreateEventType (EventTypeModel model)
         {
@@ -67,7 +64,6 @@ namespace GoPlan.Services
             {
                 var entity = ctx.EventTypes.Single(e => e.ID == model.ID);
 
-                entity.ID = model.ID;
                 entity.Name = model.Name;
 
                 return ctx.SaveChanges() == 1;

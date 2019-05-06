@@ -21,7 +21,6 @@ namespace GoPlan.Services
             var entity =
                 new Data.Location()
                 {
-                    //ID = model.ID,
                     Planet = model.Planet,
                     Country = model.Country,
                     State = model.State,
@@ -43,7 +42,7 @@ namespace GoPlan.Services
                     .Locations
                     .Select(e => new LocationModel
                     {
-                        //ID = e.ID,
+                        ID = e.ID,
                         Planet =e.Planet,
                         Country = e.Country,
                         State = e.State,
@@ -62,7 +61,7 @@ namespace GoPlan.Services
                 var entity = ctx.Locations.Single(e => e.ID == ID);
                 return new LocationModel
                 {
-                    //ID = entity.ID,
+                    ID = entity.ID,
                     Planet = entity.Planet,
                     City = entity.City,
                     Country = entity.Country,
@@ -78,7 +77,6 @@ namespace GoPlan.Services
             {
                 var entity = ctx.Locations.Single(e => e.ID == model.ID);
 
-                //model.ID = entity.ID;
                 model.Planet = entity.Planet;
                 model.Country = entity.Country;
                 model.City = entity.City;
