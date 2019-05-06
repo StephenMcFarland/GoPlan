@@ -73,6 +73,10 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="VacationModels\VacationAdminListItem.cs" />
+    <Compile Include="VacationModels\VacationCreate.cs" />
+    <Compile Include="VacationModels\VacationEdit.cs" />
+    <Compile Include="VacationModels\VacationListItem.cs" />
     <Compile Include="VacaEventModels\VacaEventCreate.cs" />
     <Compile Include="VacaEventModels\VacaEventDetailEdit.cs" />
     <Compile Include="VacaEventModels\VacaEventListItem.cs" />
