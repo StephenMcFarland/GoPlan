@@ -17,6 +17,12 @@ using GoPlanAPI.Models;
 using GoPlanAPI.Providers;
 using GoPlanAPI.Results;
 using GoPlan.Data;
+using System.Web.Mvc;
+using AuthorizeAttribute = System.Web.Http.AuthorizeAttribute;
+using RoutePrefixAttribute = System.Web.Http.RoutePrefixAttribute;
+using RouteAttribute = System.Web.Http.RouteAttribute;
+using OverrideAuthenticationAttribute = System.Web.Http.OverrideAuthenticationAttribute;
+using AllowAnonymousAttribute = System.Web.Http.AllowAnonymousAttribute;
 
 namespace GoPlanAPI.Controllers
 {
