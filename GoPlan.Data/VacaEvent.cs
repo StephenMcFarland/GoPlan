@@ -11,7 +11,6 @@ namespace GoPlan.Data
     {
         [Key]
         public int ID { get; set; }
-        [Required]
         public Guid UserID { get; set; }
         [Required]
         public int EventTypeID { get; set; }
