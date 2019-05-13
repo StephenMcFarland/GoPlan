@@ -11,12 +11,15 @@ namespace GoPlan.Services
     public class VacaEventService
     {
         private readonly Guid _userId;
+        private readonly bool _isAdmin;
 
         public VacaEventService() { }
 
         public VacaEventService(Guid userId)
         {
             _userId = userId;
+            var adminSvc = new AdminService(userId);
+            _isAdmin = adminSvc.IsAdminUser();
         }
         public bool CreateVacaEvent(VacaEventCreate model)
         {
@@ -93,7 +96,7 @@ namespace GoPlan.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.VacaEvents.Where(e => e.VacationID == vacaID)
+                var query = ctx.VacaEvents.Where(e => e.VacationID == vacaID && ((_userId == e.UserID) || (_isAdmin)))
                     .Select(e => new VacaEventListItem
                     {
                         EventTypeID = e.EventTypeID,
@@ -115,7 +118,7 @@ namespace GoPlan.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.VacaEvents.Single(e => e.ID == id);
+                var entity = ctx.VacaEvents.Single(e => e.ID == id && ((_userId == e.UserID) || (_isAdmin)));
                 var userEntity = ctx.Users.FirstOrDefault(e => e.Id == entity.UserID.ToString());
                 var detail = new VacaEventDetailEdit
                 {
@@ -142,7 +145,7 @@ namespace GoPlan.Services
             using (var ctx = new ApplicationDbContext())
             {
                 //may need to add user/admin edit authorization check?
-                var entity = ctx.VacaEvents.Single(e => e.ID == model.ID);
+                var entity = ctx.VacaEvents.Single(e => e.ID == model.ID && ((_userId == e.UserID) || (_isAdmin)));
 
                 entity.EventTypeID = model.EventTypeID;
                 entity.LocationName = model.LocationName;
@@ -163,7 +166,7 @@ namespace GoPlan.Services
             using (var ctx = new ApplicationDbContext())
             {
                 //may need to add user/admin edit authorization check?
-                var entity = ctx.VacaEvents.Single(e => e.ID == id);
+                var entity = ctx.VacaEvents.Single(e => e.ID == id && ((_userId == e.UserID) || (_isAdmin)));
                 ctx.VacaEvents.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

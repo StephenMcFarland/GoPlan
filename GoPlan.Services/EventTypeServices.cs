@@ -16,7 +16,7 @@ namespace GoPlan.Services
         public bool CreateEventType (EventTypeModel model)
         {
             var entity =
-                new Data.EventType()
+                new EventType()
                 {
                     Name = model.Name
                 };

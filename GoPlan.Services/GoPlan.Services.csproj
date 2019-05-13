@@ -81,6 +81,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AdminService.cs" />
     <Compile Include="EventTypeServices.cs" />
     <Compile Include="LocationServices.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

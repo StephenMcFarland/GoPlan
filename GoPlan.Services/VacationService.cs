@@ -12,12 +12,15 @@ namespace GoPlan.Services
     {
 
         private readonly Guid _userId;
+        private readonly bool _isAdmin;
 
         public VacationService(){}
 
         public VacationService(Guid userId)
         {
             _userId = userId;
+            var adminSvc = new AdminService(userId);
+            _isAdmin = adminSvc.IsAdminUser();
         }
 
         public bool CreateVacation(VacationCreate model)
@@ -103,7 +106,7 @@ namespace GoPlan.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Vacations.Single(e => e.ID == id);
+                var entity = ctx.Vacations.Single(e => e.ID == id && ((_userId == e.UserID) || (_isAdmin)));
                 var detail = new VacationEdit
                 {
                     ID = entity.ID,
@@ -128,7 +131,7 @@ namespace GoPlan.Services
                 var entity =
                     ctx
                         .Vacations
-                        .Single(e => e.ID == model.ID && e.UserID == _userId);
+                        .Single(e => e.ID == model.ID && ((_userId == e.UserID) || (_isAdmin)));
 
                 entity.StartDate = model.StartDate;
                 entity.EndDate = model.EndDate;
@@ -150,18 +153,18 @@ namespace GoPlan.Services
                 var entity =
                     ctx
                         .Vacations
-                        .Single(e => e.ID == ID && e.UserID == _userId);
+                        .Single(e => e.ID == ID && ((_userId == e.UserID) || (_isAdmin)));
 
                 ctx.Vacations.Remove(entity);
 
                 return ctx.SaveChanges() == 1;
             }
         }
-        private List<string> convertArrayToList(string[] array)
-        {
-            var output = array.ToList();
-            return output;
-        }
+        //private List<string> convertArrayToList(string[] array)
+        //{
+        //    var output = array.ToList();
+        //    return output;
+        //}
 
     }
 }
