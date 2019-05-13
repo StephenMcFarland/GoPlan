@@ -96,7 +96,7 @@ namespace GoPlan.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var query = ctx.VacaEvents.Where(e => e.VacationID == vacaID && ((_userId == e.UserID) || (_isAdmin)))
+                var query = ctx.VacaEvents.Where(e => e.VacationID == vacaID)
                     .Select(e => new VacaEventListItem
                     {
                         EventTypeID = e.EventTypeID,
