@@ -73,6 +73,7 @@ namespace GoPlan.Services
                 var query = ctx.VacaEvents
                     .Select(e => new VacaEventListItem
                     {
+                        ID = e.ID,
                         EventTypeID = e.EventTypeID,
                         LocationName = e.LocationName,
                         GooglePlaceID = e.GooglePlaceID,

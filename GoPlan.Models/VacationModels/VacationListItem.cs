@@ -8,6 +8,10 @@ namespace GoPlan.Models.VacationModels
 {
     public class VacationListItem
     {
+        public int ID { get; set; }
+
+        public DateTimeOffset CreatedDate { get; set; }
+
         public DateTimeOffset StartDate { get; set; }
 
         public DateTimeOffset EndDate { get; set; }

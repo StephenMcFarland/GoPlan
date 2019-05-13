@@ -11,6 +11,7 @@ using Owin;
 using GoPlanAPI.Providers;
 using GoPlanAPI.Models;
 using GoPlan.Data;
+using Microsoft.Owin.Cors;
 
 namespace GoPlanAPI
 {
@@ -32,6 +33,7 @@ namespace GoPlanAPI
             app.UseCookieAuthentication(new CookieAuthenticationOptions());
             app.UseExternalSignInCookie(DefaultAuthenticationTypes.ExternalCookie);
 
+            //app.UseCors(CorsOptions.AllowAll);
             // Configure the application for OAuth based flow
             PublicClientId = "self";
             OAuthOptions = new OAuthAuthorizationServerOptions

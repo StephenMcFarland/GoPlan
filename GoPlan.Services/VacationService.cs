@@ -61,6 +61,8 @@ namespace GoPlan.Services
                             e =>
                                 new VacationListItem
                                 {
+                                    ID = e.ID,
+                                    CreatedDate = e.CreatedDate,
                                     StartDate = e.StartDate,
                                     EndDate = e.EndDate,
                                     Name = e.Name,

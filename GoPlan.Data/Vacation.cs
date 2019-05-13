@@ -26,9 +26,9 @@ namespace GoPlan.Data
 
         public decimal TotalCost { get; set; }
 
-        public string ImageSource { get; set; }
+        public string ImageSource { get; set; } = "none";
 
-        public string EventList { get; set; }
+        public string EventList { get; set; } = "none";
 
         public string Attendees { get; set; }
 
