@@ -118,7 +118,7 @@ namespace GoPlan.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.VacaEvents.Single(e => e.ID == id && ((_userId == e.UserID) || (_isAdmin)));
+                var entity = ctx.VacaEvents.Single(e => e.ID == id);
                 var userEntity = ctx.Users.FirstOrDefault(e => e.Id == entity.UserID.ToString());
                 var detail = new VacaEventDetailEdit
                 {
@@ -145,7 +145,7 @@ namespace GoPlan.Services
             using (var ctx = new ApplicationDbContext())
             {
                 //may need to add user/admin edit authorization check?
-                var entity = ctx.VacaEvents.Single(e => e.ID == model.ID && ((_userId == e.UserID) || (_isAdmin)));
+                var entity = ctx.VacaEvents.Single(e => e.ID == model.ID);
 
                 entity.EventTypeID = model.EventTypeID;
                 entity.LocationName = model.LocationName;
@@ -166,7 +166,7 @@ namespace GoPlan.Services
             using (var ctx = new ApplicationDbContext())
             {
                 //may need to add user/admin edit authorization check?
-                var entity = ctx.VacaEvents.Single(e => e.ID == id && ((_userId == e.UserID) || (_isAdmin)));
+                var entity = ctx.VacaEvents.Single(e => e.ID == id);
                 ctx.VacaEvents.Remove(entity);
 
                 return ctx.SaveChanges() == 1;

@@ -36,6 +36,7 @@ namespace GoPlanAPI.Controllers
         {
             VacaEventService vacaEventService = CreateVacaEventService();
             var vEvent = vacaEventService.GetVacaEventByID(id);
+
             return Ok(vEvent);
         }
         public IHttpActionResult Post(VacaEventCreate vacaEvent)

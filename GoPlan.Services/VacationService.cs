@@ -106,7 +106,7 @@ namespace GoPlan.Services
         {
             using (var ctx = new ApplicationDbContext())
             {
-                var entity = ctx.Vacations.Single(e => e.ID == id && ((_userId == e.UserID) || (_isAdmin)));
+                var entity = ctx.Vacations.Single(e => e.ID == id);
                 var detail = new VacationEdit
                 {
                     ID = entity.ID,
@@ -131,7 +131,7 @@ namespace GoPlan.Services
                 var entity =
                     ctx
                         .Vacations
-                        .Single(e => e.ID == model.ID && ((_userId == e.UserID) || (_isAdmin)));
+                        .Single(e => e.ID == model.ID);
 
                 entity.StartDate = model.StartDate;
                 entity.EndDate = model.EndDate;
@@ -153,7 +153,7 @@ namespace GoPlan.Services
                 var entity =
                     ctx
                         .Vacations
-                        .Single(e => e.ID == ID && ((_userId == e.UserID) || (_isAdmin)));
+                        .Single(e => e.ID == ID);
 
                 ctx.Vacations.Remove(entity);
 
