@@ -79,7 +79,7 @@ namespace GoPlanAPI.Controllers
 
             return new UserInfoViewModel
             {
-                Email = User.Identity.GetUserName(),
+                Username = User.Identity.GetUserName(),
                 Role = role,
                 HasRegistered = externalLogin == null,
                 LoginProvider = externalLogin != null ? externalLogin.LoginProvider : null
