@@ -11,15 +11,12 @@ namespace GoPlan.Services
     public class VacaEventService
     {
         private readonly Guid _userId;
-        private readonly bool _isAdmin;
 
         public VacaEventService() { }
 
         public VacaEventService(Guid userId)
         {
             _userId = userId;
-            var adminSvc = new AdminService(userId);
-            _isAdmin = adminSvc.IsAdminUser();
         }
         public bool CreateVacaEvent(VacaEventCreate model)
         {
@@ -77,6 +74,7 @@ namespace GoPlan.Services
                     .Select(e => new VacaEventListItem
                     {
                         ID = e.ID,
+                        User = ctx.Users.FirstOrDefault(u => u.Id == e.UserID.ToString()).UserName,
                         EventTypeID = e.EventTypeID,
                         LocationName = e.LocationName,
                         GooglePlaceID = e.GooglePlaceID,
@@ -99,6 +97,8 @@ namespace GoPlan.Services
                 var query = ctx.VacaEvents.Where(e => e.VacationID == vacaID)
                     .Select(e => new VacaEventListItem
                     {
+                        ID = e.ID,
+                        User = ctx.Users.FirstOrDefault(u => u.Id == e.UserID.ToString()).UserName,
                         EventTypeID = e.EventTypeID,
                         LocationName = e.LocationName,
                         GooglePlaceID = e.GooglePlaceID,

@@ -9,6 +9,7 @@ namespace GoPlan.Models.VacaEventModels
     public class VacaEventListItem
     {
         public int ID { get; set; }
+        public string User { get; set; }
         public int EventTypeID { get; set; }
         public string LocationName { get; set; }
         public string GooglePlaceID { get; set; }

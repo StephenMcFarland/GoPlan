@@ -12,15 +12,12 @@ namespace GoPlan.Services
     {
 
         private readonly Guid _userId;
-        private readonly bool _isAdmin;
 
         public VacationService(){}
 
         public VacationService(Guid userId)
         {
             _userId = userId;
-            var adminSvc = new AdminService(userId);
-            _isAdmin = adminSvc.IsAdminUser();
         }
 
         public bool CreateVacation(VacationCreate model)
@@ -65,6 +62,7 @@ namespace GoPlan.Services
                                 new VacationListItem
                                 {
                                     ID = e.ID,
+                                    User = ctx.Users.FirstOrDefault(u => u.Id == e.UserID.ToString()).UserName,
                                     CreatedDate = e.CreatedDate,
                                     StartDate = e.StartDate,
                                     EndDate = e.EndDate,
@@ -91,7 +89,7 @@ namespace GoPlan.Services
                                 new VacationAdminListItem
                                 {
                                     ID = e.ID,
-                                    UserID = e.UserID.ToString(),
+                                    User = ctx.Users.FirstOrDefault(u => u.Id == e.UserID.ToString()).UserName,
                                     Name = e.Name,
                                     TotalCost = e.TotalCost,
                                     ImageSource = e.ImageSource
@@ -110,6 +108,7 @@ namespace GoPlan.Services
                 var detail = new VacationEdit
                 {
                     ID = entity.ID,
+                    User = ctx.Users.FirstOrDefault(u => u.Id == entity.UserID.ToString()).UserName,
                     CreatedDate = entity.CreatedDate,
                     StartDate = entity.StartDate,
                     EndDate = entity.StartDate,
