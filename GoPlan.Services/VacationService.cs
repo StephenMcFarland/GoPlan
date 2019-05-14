@@ -55,7 +55,6 @@ namespace GoPlan.Services
                 var query =
                     ctx
                         .Vacations
-                        .AsEnumerable()
                         .Where(e => e.UserID == _userId)
                         .Select(
                             e =>
@@ -69,7 +68,7 @@ namespace GoPlan.Services
                                     Name = e.Name,
                                     Description = e.Description,
                                     TotalCost = e.TotalCost,
-                                    Attendees = e.Attendees.Split(',').ToList(),
+                                    Attendees = e.Attendees,
                                     ImageSource = e.ImageSource
                                 }
                         );
