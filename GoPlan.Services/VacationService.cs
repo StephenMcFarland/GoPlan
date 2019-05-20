@@ -110,7 +110,7 @@ namespace GoPlan.Services
                     User = ctx.Users.FirstOrDefault(u => u.Id == entity.UserID.ToString()).UserName,
                     CreatedDate = entity.CreatedDate,
                     StartDate = entity.StartDate,
-                    EndDate = entity.StartDate,
+                    EndDate = entity.EndDate,
                     Name = entity.Name,
                     Description = entity.Description,
                     Attendees = entity.Attendees.Split(','),
